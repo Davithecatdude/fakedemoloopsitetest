@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Fake DemoLoop</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      height: 100%;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    h1 {
+      margin: 0 0 10px 0;
+      font-size: 2em;
+      text-shadow: 2px 2px 4px #000000;
+    }
+    p.made-by {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      font-size: 0.8em;
+      color: #aaa;
+    }
+    select {
+      background-color: transparent;
+      color: white;
+      border: 1px solid white;
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23fff' d='M6 8.5L2 4.5h8z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 30px;
+      cursor: pointer;
+    }
+    select option {
+      background-color: black;
+      color: white;
+    }
+    .divider {
+      background-color: #555;
+      height: 1px;
+      border: none;
+      padding: 0;
+      margin: 5px 0;
+      pointer-events: none;
+    }
+    #confirm-button {
+      background-color: #007aff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #confirm-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <video muted loop playsinline id="demo-video"></video>
+
+  <div class="content">
+    <h1>fake demolooop</h1>
+    <select id="device-select">
+      <option value="">seleziona</option>
+
+      <option class="divider" disabled>— iPhone 16 Series —</option>
+      <option value="media/loop_iphone16.mp4">iPhone 16</option>
+      <option value="media/loop_iphone16plus.mp4">iPhone 16 Plus</option>
+      <option value="media/loop_iphone16e.mp4">iPhone 16e</option>
+
+      <option class="divider" disabled>— iPhone 15 Series —</option>
+      <option value="media/loop_iphone15.mp4">iPhone 15</option>
+      <option value="media/loop_iphone15plus.mp4">iPhone 15 Plus</option>
+      <option value="media/loop_iphone15pro.mp4">iPhone 15 Pro</option>
+
+      <option class="divider" disabled>— iPhone 14 Series —</option>
+      <option value="media/loop_iphone14.mp4">iPhone 14</option>
+      <option value="media/loop_iphone14plus.mp4">iPhone 14 Plus</option>
+      <option value="media/loop_iphone14pro.mp4">iPhone 14 Pro</option>
+      
+      <option class="divider" disabled>— iPhone SE —</option>
+      <option value="media/loop_iphonese.mp4">iPhone SE</option>
+
+      <option class="divider" disabled>— iPhone 13 Series —</option>
+      <option value="media/loop_iphone13.mp4">iPhone 13</option>
+      <option value="media/loop_iphone13promax.mp4">iPhone 13 Pro Max</option>
+      
+      <option class="divider" disabled>— iPhone 12 Series —</option>
+      <option value="media/loop_iphone12.mp4">iPhone 12</option>
+
+      <option class="divider" disabled>— iPhone 11 Series —</option>
+      <option value="media/loop_iphone11.mp4">iPhone 11</option>
+
+      <option class="divider" disabled>— iPhone XS/XR Series —</option>
+      <option value="media/loop_iphonexs.mp4">iPhone XS</option>
+      <option value="media/loop_iphonexr.mp4">iPhone XR</option>
+
+      <option class="divider" disabled>— iPhone 8 Series —</option>
+      <option value="media/loop_iphone8.mp4">iPhone 8</option>
+      <option value="media/loop_iphone8plus.mp4">iPhone 8 Plus</option>
+      <option value="media/loop_iphone7.mp4">iPhone 7</option>
+
+      <option class="divider" disabled>— iPhone 6 Series —</option>
+      <option value="media/loop_iphone6s.mp4">iPhone 6s</option>
+
+      <option class="divider" disabled>— iPhone 5 Series —</option>
+      <option value="media/loop_iphone5s.mp4">iPhone 5s</option>
+      <option value="media/loop_iphone5c.mp4">iPhone 5c</option>
+
+      <option class="divider" disabled>— iPhone 4 Series —</option>
+      <option value="media/loop_iphone4.mp4">iPhone 4</option>
+      <option value="media/loop_iphone4s.mp4">iPhone 4s</option>
+
+      <option class="divider" disabled>— iPhone 3G/3GS —</option>
+      <option value="media/loop_iphone3gs.mp4">iPhone 3GS</option>
+      <option value="media/loop_iphone3g.mp4">iPhone 3G</option>
+
+      <option class="divider" disabled>— iPhone 2G —</option>
+      <option value="media/loop_iphone2g.mp4">iPhone 2G</option>
+
+      <option class="divider" disabled>— iOS/iPod Videos —</option>
+      <option value="media/loop_iphoneios15.mp4">iOS 15</option>
+      <option value="media/loop_iphoneios13.mp4">iOS 13</option>
+      <option value="media/loop_ipod4.mp4">iPod touch 4G</option>
+    </select>
+    <button id="confirm-button">Conferma</button>
+  </div>
+
+  <p class="made-by">made by:catwithabaloon</p>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const videoElement = document.getElementById('demo-video');
+      const selectElement = document.getElementById('device-select');
+      const confirmButton = document.getElementById('confirm-button');
+      const contentElement = document.querySelector('.content');
+
+      function startVideoPlayback() {
+        const selectedValue = selectElement.value;
+        if (!selectedValue) {
+          videoElement.removeAttribute('src');
+          return;
+        }
+        videoElement.src = selectedValue;
+        
+        // Nascondi la schermata del selettore
+        contentElement.style.display = 'none';
+
+        videoElement.play().catch(error => {
+          console.error('La riproduzione è stata bloccata:', error);
+          alert('Impossibile riprodurre il video. Assicurati che il file esista.');
+        });
+      }
+
+      confirmButton.addEventListener('click', startVideoPlayback);
+    });
+  </script>
+</body>
+</html>
